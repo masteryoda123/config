@@ -63,7 +63,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_javascript_checkers = ['eslint']
 
 " Syntastic Debugging
-let g:syntastic_debug = 3
+" let g:syntastic_debug = 3
 
 " Solarized vim settings
 syntax enable
