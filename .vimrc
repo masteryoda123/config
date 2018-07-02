@@ -1,4 +1,4 @@
-filetype plugin indent on
+filetype plugin on
 syntax on
 set encoding=utf-8
 
@@ -14,7 +14,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'pangloss/vim-javascript'
 Plugin 'bling/vim-airline'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'easymotion/vim-easymotion'
@@ -30,7 +30,7 @@ let mapleader = "\<Space>"
 :imap <D-v> ^O:set paste<Enter>^R+^O:set nopaste<Enter>
 
 " Text settings
-set nowrap
+set wrap
 set shiftwidth=2
 set tabstop=2
 set backspace=indent,eol,start
@@ -53,17 +53,17 @@ set noswapfile
 " Syntastic settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
+set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 let g:syntastic_javascript_checkers = ['eslint']
 
 " Syntastic Debugging
-" let g:syntastic_debug = 3
+let g:syntastic_debug = 0
 
 " Solarized vim settings
 syntax enable
@@ -75,20 +75,25 @@ colorscheme solarized
 
 " NERDTree settings
 map <C-n> :NERDTreeToggle<CR> " Map ctrl-n to NERDTree
+" Use ctrl-[hjkl] to select the active split!
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
 
 " Airline settings
 let g:airline_powerline_fonts = 1 
 
 " Autopairs settings
-"let g:AutoPairsFlyMode = 1
+let g:AutoPairsFlyMode = 1
 
 " Vim-tmux-navigator settings
-"let g:tmux_navigator_no_mappings = 1
-"nnoremap <silent> {c-h} :TmuxNavigateLeft<cr>
-"nnoremap <silent> {c-j} :TmuxNavigateDown<cr>
-"nnoremap <silent> {c-k} :TmuxNavigateUp<cr>
-"nnoremap <silent> {c-l} :TmuxNavigateRight<cr>
-"nnoremap <silent> {c-\\} :TmuxNavigatePrevious<cr>
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> {c-h} :TmuxNavigateLeft<cr>
+nnoremap <silent> {c-j} :TmuxNavigateDown<cr>
+nnoremap <silent> {c-k} :TmuxNavigateUp<cr>
+nnoremap <silent> {c-l} :TmuxNavigateRight<cr>
+nnoremap <silent> {c-\\} :TmuxNavigatePrevious<cr>
 
 " Vim window settings
 nmap <silent> <A-Up> :wincmd k<CR>
@@ -97,3 +102,7 @@ nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
 set splitbelow
 set splitright
+
+" Mac Clipboard Copy Paste Mapping
+vmap <C-x> :!pbcopy<CR>
+vmap <C-c> :w !pbcopy<CR><CR>
